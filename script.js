@@ -1,10 +1,10 @@
 function playRound() {
-    let playerSelection = this.id;
-    let computerSelection = computerTurn();
+    const playerSelection = this.id;
+    const computerSelection = computerTurn();
     console.log(`Player: ${playerSelection} | CPU: ${computerSelection}`)
-    let winner = whoWon(playerSelection, computerSelection);
-    console.log(winner)
-    document.getElementById("winner").innerText = winner;
+    const winner = whoWon(playerSelection, computerSelection);
+    winnerModal.classList.add('open');
+    winnerPar.innerText = winner;
 }
 
 function computerTurn() {
@@ -20,7 +20,6 @@ function computerTurn() {
 }
 
 function whoWon(player, CPU) {
-    console.log(player, CPU)
     if (player === CPU) return "It's a tie!"
     else if (player === "rock") {
         if (CPU === "paper") return "CPU Wins"
@@ -36,6 +35,27 @@ function whoWon(player, CPU) {
     }
 }
 
+function removeModal(e) {
+    if (e.target.classList[0] === 'modal-content') return;
+    winnerModal.classList.remove('open')
+}
+
+const winnerModal = document.createElement('div');
+winnerModal.classList.add('modal');
+const winnerModalContent = document.createElement('div');
+winnerModalContent.classList.add('modal-content');
+const winnerPar = document.createElement('p');
+winnerModalContent.appendChild(winnerPar);
+const closeBtn = document.createElement('i');
+closeBtn.classList.add('fa', 'fa-times-circle');
+winnerModalContent.appendChild(closeBtn);
+winnerModal.appendChild(winnerModalContent);
+const section = document.getElementById('container');
+document.body.insertBefore(winnerModal, section);
+
+winnerModal.addEventListener('click', removeModal)
+
 document.getElementById("rock").onclick = playRound;
 document.getElementById("paper").onclick = playRound;
 document.getElementById("scissors").onclick = playRound;
+
