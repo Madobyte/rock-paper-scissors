@@ -1,10 +1,19 @@
+import animateHands from './modules/animation.js';
+
 function playRound() {
     const playerSelection = this.id;
     const computerSelection = computerTurn();
     console.log(`Player: ${playerSelection} | CPU: ${computerSelection}`)
     const winner = whoWon(playerSelection, computerSelection);
-    winnerModal.classList.add('open');
-    winnerPar.innerText = winner;
+    animateHands();
+    const hands = document.addEventListener('animationend', function declareWinner() {
+        winnerModal.classList.add('open');
+        winnerPar.innerText = winner;
+        const playerHand = document.getElementById('player-hand');
+        const cpuHand = document.getElementById('cpu-hand')
+        playerHand.remove();
+        cpuHand.remove();
+    });
 }
 
 function computerTurn() {
@@ -36,10 +45,16 @@ function whoWon(player, CPU) {
 }
 
 function removeModal(e) {
-    if (e.target.classList[0] === 'modal-content') return;
-    winnerModal.classList.remove('open')
+    if (e.target.classList[0] === 'modal' || e.target.classList[0] === 'fa') {
+        winnerModal.classList.remove('open')
+    }
 }
 
+function declareWinner() {
+    
+}
+
+/* Modal */
 const winnerModal = document.createElement('div');
 winnerModal.classList.add('modal');
 const winnerModalContent = document.createElement('div');
@@ -53,7 +68,10 @@ winnerModal.appendChild(winnerModalContent);
 const section = document.getElementById('container');
 document.body.insertBefore(winnerModal, section);
 
-winnerModal.addEventListener('click', removeModal)
+winnerModal.addEventListener('click', removeModal);
+
+const handContainer = document.querySelector('hand-container'); //to remove the animation
+//handContainer.addEventListener('');
 
 document.getElementById("rock").onclick = playRound;
 document.getElementById("paper").onclick = playRound;
