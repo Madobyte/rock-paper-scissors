@@ -6,7 +6,10 @@
 
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+
     z-index: 1;
+    max-width: 500px;
 }
 
 img.hand {

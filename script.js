@@ -9,10 +9,8 @@ function playRound() {
     const hands = document.addEventListener('animationend', function declareWinner() {
         winnerModal.classList.add('open');
         winnerPar.innerText = winner;
-        const playerHand = document.getElementById('player-hand');
-        const cpuHand = document.getElementById('cpu-hand')
-        playerHand.remove();
-        cpuHand.remove();
+        const handContainer = document.querySelector('.hand-container');
+        handContainer.remove();
     });
 }
 
