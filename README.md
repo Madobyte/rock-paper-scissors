@@ -11,3 +11,10 @@ I added an animation module. I need to figure out next how to show the player an
 Removed the .hand-container, instead of individual hands (#player-hand, #cpu-hand).
 
 Modified for mobile users.
+
+I had problems with mobile responsiveness.
+
+01/30/2021
+Fixed mobile responsiveness bugs.
+
+Showed cpu and player' hands before the winner modal (with SetTimeout).

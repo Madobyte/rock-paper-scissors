@@ -5,12 +5,14 @@ function playRound() {
     const computerSelection = computerTurn();
     console.log(`Player: ${playerSelection} | CPU: ${computerSelection}`)
     const winner = whoWon(playerSelection, computerSelection);
-    animateHands();
+    animateHands(playerSelection, computerSelection);
     const hands = document.addEventListener('animationend', function declareWinner() {
-        winnerModal.classList.add('open');
-        winnerPar.innerText = winner;
-        const handContainer = document.querySelector('.hand-container');
-        handContainer.remove();
+        setTimeout(() => {
+            winnerModal.classList.add('open');
+            winnerPar.innerText = winner;
+            const handContainer = document.querySelector('.hand-container');
+            handContainer.remove();
+        }, 1000);
     });
 }
 
@@ -48,10 +50,6 @@ function removeModal(e) {
     }
 }
 
-function declareWinner() {
-    
-}
-
 /* Modal */
 const winnerModal = document.createElement('div');
 winnerModal.classList.add('modal');
@@ -68,10 +66,6 @@ document.body.insertBefore(winnerModal, section);
 
 winnerModal.addEventListener('click', removeModal);
 
-const handContainer = document.querySelector('hand-container'); //to remove the animation
-//handContainer.addEventListener('');
-
-document.getElementById("rock").onclick = playRound;
-document.getElementById("paper").onclick = playRound;
-document.getElementById("scissors").onclick = playRound;
-
+document.getElementById('rock').addEventListener('click', playRound);
+document.getElementById('paper').addEventListener('click', playRound);
+document.getElementById('scissors').addEventListener('click', playRound);
