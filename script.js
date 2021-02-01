@@ -1,19 +1,31 @@
 import animateHands from './modules/animation.js';
+import score from './modules/score.js';
 
 function playRound() {
     const playerSelection = this.id;
-    const computerSelection = computerTurn();
-    console.log(`Player: ${playerSelection} | CPU: ${computerSelection}`)
-    const winner = whoWon(playerSelection, computerSelection);
-    animateHands(playerSelection, computerSelection);
-    const hands = document.addEventListener('animationend', function declareWinner() {
+    const cpuSelection = computerTurn();
+    console.log(`Player: ${playerSelection} | CPU: ${cpuSelection}`)
+    animateHands(playerSelection, cpuSelection);
+    const winner = whoWon(playerSelection, cpuSelection);
+    const hands = document.getElementById('player-hand');
+    hands.addEventListener('animationend', () => {
+        setTimeout(() => {
+            const handContainer = document.querySelector('.hand-container');
+            handContainer.remove();
+        }, 800);
+    }
+    
+    /* function declareWinner() {
         setTimeout(() => {
             winnerModal.classList.add('open');
             winnerPar.innerText = winner;
             const handContainer = document.querySelector('.hand-container');
             handContainer.remove();
-        }, 1000);
-    });
+        }, 800);
+    } */
+    
+    );
+    score(winner);
 }
 
 function computerTurn() {
@@ -44,28 +56,10 @@ function whoWon(player, CPU) {
     }
 }
 
-function removeModal(e) {
-    if (e.target.classList[0] === 'modal' || e.target.classList[0] === 'fa') {
-        winnerModal.classList.remove('open')
-    }
-}
+const rock = document.getElementById('rock');
+const paper = document.getElementById('paper');
+const scissors = document.getElementById('scissors');
 
-/* Modal */
-const winnerModal = document.createElement('div');
-winnerModal.classList.add('modal');
-const winnerModalContent = document.createElement('div');
-winnerModalContent.classList.add('modal-content');
-const winnerPar = document.createElement('p');
-winnerModalContent.appendChild(winnerPar);
-const closeBtn = document.createElement('i');
-closeBtn.classList.add('fa', 'fa-times-circle');
-winnerModalContent.appendChild(closeBtn);
-winnerModal.appendChild(winnerModalContent);
-const section = document.getElementById('container');
-document.body.insertBefore(winnerModal, section);
-
-winnerModal.addEventListener('click', removeModal);
-
-document.getElementById('rock').addEventListener('click', playRound);
-document.getElementById('paper').addEventListener('click', playRound);
-document.getElementById('scissors').addEventListener('click', playRound);
+rock.addEventListener('click', playRound);
+paper.addEventListener('click', playRound);
+scissors.addEventListener('click', playRound);

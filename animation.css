@@ -12,6 +12,7 @@
 }
 
 img.hand {
+    max-height: 200px;
     max-width: 50vw;
 }
 
