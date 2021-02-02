@@ -30,32 +30,18 @@ function showWinnerModal(winner) {
     const winnerPar = document.createElement('p');
     winnerPar.innerText = winner;
     winnerModalContent.appendChild(winnerPar);
-    /* const closeBtn = document.createElement('i');
-    closeBtn.classList.add('fa', 'fa-times-circle'); */
     const newGameBtn = document.createElement('button');
     newGameBtn.classList.add('new-game-btn');
     newGameBtn.innerText = 'New Game'
-    /* winnerModalContent.appendChild(closeBtn); */
     winnerModal.appendChild(winnerModalContent);
     winnerModalContent.appendChild(newGameBtn);
-
     const section = document.getElementById('container');
     document.body.insertBefore(winnerModal, section);
 
-    //winnerModal.addEventListener('click', removeModal)
     newGameBtn.addEventListener('click', () => {
         location.reload();
     })
 }
-
-/* function removeModal(e) {
-    const winnerModal = document.querySelector('.modal');
-    if (e.target.classList[0] === 'modal' || 
-        e.target.classList[1] === 'fa-times-circle' || 
-        e.code === 'Escape') {
-        winnerModal.remove();
-    }
-} */
 
 let playerScore = 0;
 let cpuScore = 0;
@@ -69,11 +55,7 @@ standing.innerHTML = `${playerScore} : ${cpuScore}`;
 const resetBtn = document.createElement('button');
 resetBtn.classList.add('reset-btn');
 resetBtn.innerText = 'Reset'
-//standing.parentNode.insertBefore(resetBtn, standing.nextSibling);
 resetBtn.addEventListener('click', () => {
-    /* playerScore = 0;
-    cpuScore = 0;
-    standing.innerHTML = `${playerScore} : ${cpuScore}`; */
     location.reload();
 })
 

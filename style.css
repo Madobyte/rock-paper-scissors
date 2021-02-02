@@ -58,7 +58,6 @@ img.choice:hover {
     transform: scale(1.1);
 }
 .modal {
-    /* display: none;  */
     position: fixed; 
     z-index: 1;
     left: 0;
@@ -95,18 +94,6 @@ img.choice:hover {
     position: relative;
     top: 50%;
 }
-/* 
-i.fa-times-circle {
-   font-size: 30px;
-   position: relative;
-   left: 50%;
-   top: -35px;
-   cursor: pointer;
-}
-i.fa-times-circle:hover {
-    color: rgb(255, 0, 0);
-} */
-
 .score-container {
     display: flex;
     flex-direction: column;
@@ -121,7 +108,6 @@ i.fa-times-circle:hover {
 
     font-weight: 400;
 }
-
 .reset-btn {
     margin: 1rem;
 }

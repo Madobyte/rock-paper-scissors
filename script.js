@@ -13,18 +13,7 @@ function playRound() {
             const handContainer = document.querySelector('.hand-container');
             handContainer.remove();
         }, 800);
-    }
-    
-    /* function declareWinner() {
-        setTimeout(() => {
-            winnerModal.classList.add('open');
-            winnerPar.innerText = winner;
-            const handContainer = document.querySelector('.hand-container');
-            handContainer.remove();
-        }, 800);
-    } */
-    
-    );
+    });
     score(winner);
 }
 
