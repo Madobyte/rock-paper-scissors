@@ -1,5 +1,6 @@
 # Rock, Paper, Scissors Game
-## This Project is part of The Odin Project Curriculum
+**by M. Bambalan**
+
 **Technologies used:** 
 - HTML5
 - CSS3
@@ -49,3 +50,6 @@ Rearranged some game logic.
 Added colors. Made the UI beatiful.
 
 Cleaned up the code.
+
+
+**This Project is part of The Odin Project Curriculum**
