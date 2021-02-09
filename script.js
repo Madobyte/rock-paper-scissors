@@ -1,5 +1,6 @@
 import animateHands from './modules/animation.js';
 import score from './modules/score.js';
+import appWrapper from './modules/appWrapper.js'
 
 function playRound() {
     const playerSelection = this.id;
@@ -52,3 +53,5 @@ const scissors = document.getElementById('scissors');
 rock.addEventListener('click', playRound);
 paper.addEventListener('click', playRound);
 scissors.addEventListener('click', playRound);
+
+appWrapper();
